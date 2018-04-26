@@ -1,13 +1,25 @@
-function psnr = subsamplingfull(imfile, Q)
-
-% Input: imfile: filename for the input image
+%
+%   Use this function to test the chroma upsampling scheme proposed in
+%   the following paper:
+%
+%        J. Korhonen, "Improving image fidelity by luma-assisted chroma 
+%        subsampling," IEEE International Conference on Multimedia and 
+%        Expo (ICME'15), Turin, Italy, June 2015.
+%
+%   Written by Jari Korhonen, Technical University of Denmark.
+%
+%   Input: 
+%        imfile: filename for the input image
 %        Q: quantization factor for simulated JPEG quantization
 %           valid values [1,100], otherwise no JPEG simulated
 %
-% Output: vector of psnr values
-%         [proposed box bilinear bicubic laczos3]  
+%   Output: 
+%        vector of PSNR values
+%        [proposed box bilinear bicubic laczos3]  
 %
 %
+
+function psnr = subsamplingfull(imfile, Q)
 
 % Read image from file and normalize to [0,1]
 ref_image = cast(imread(imfile),'double')./255;
